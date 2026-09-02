@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="もっと深く、もっと激しく――大人の恋 ピックアップ。ゴールドライフオンライン限定、9月16日（水）から毎晩22時公開の全10夜。">
+<title>もっと深く、もっと激しく</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+  :root{
+    color-scheme: dark;
+    --ink:        #120710;
+    --ink-deep:   #0b040a;
+    --panel:      #1c0d17;
+    --panel-2:    #240f1c;
+    --line:       rgba(226, 172, 194, .14);
+    --line-soft:  rgba(226, 172, 194, .08);
+    --rose:       #e6a7bf;
+    --rose-deep:  #b8375f;
+    --rose-dim:   #a8657f;
+    --champagne:  #d9c3a3;
+    --text:       #efe2e8;
+    --muted:      #b9a2ad;
+    --muted-2:    #8d7683;
+    --serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  }
+
+  body{
+    margin:0;
+    background: var(--ink);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+  *,*::before,*::after{ box-sizing: border-box; }
+
+  .wrap{ max-width: 720px; margin: 0 auto; }
+  .pad{ padding-inline: 24px; }
+
+  a{ color: var(--rose); }
+  :focus-visible{ outline: 2px solid var(--rose); outline-offset: 3px; }
+
+  .eyebrow{
+    font-size: 10px; letter-spacing: .34em; text-transform: uppercase;
+    color: var(--rose-dim); font-weight: 500;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position: relative; overflow: hidden;
+    padding: 52px 24px 64px;
+    text-align: center;
+    background:
+      radial-gradient(120% 78% at 50% -12%, #6d1338 0%, #3a0a20 32%, rgba(18,7,16,0) 72%),
+      var(--ink-deep);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .hero > *{ position: relative; }
+  .hero-tag{
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+    color: rgba(240, 214, 224, .78);
+  }
+  .hero-tag .jp{ letter-spacing: .12em; text-transform: none; font-size: 11px; }
+  .hero-tag .bar{ width: 22px; height: 1px; background: rgba(240,214,224,.35); }
+
+  h1{
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(38px, 11vw, 60px);
+    line-height: 1.28; letter-spacing: .04em;
+    margin: 26px 0 0; text-wrap: balance;
+    color: #fdf3f6;
+    text-shadow: 0 0 46px rgba(255, 170, 200, .28);
+  }
+  .sub{
+    font-family: var(--serif); font-size: clamp(15px, 4.2vw, 19px);
+    letter-spacing: .16em; color: var(--champagne); margin-top: 20px;
+  }
+  .lead{
+    margin: 30px auto 0; max-width: 30em;
+    font-size: 13.5px; line-height: 2.15; color: rgba(238, 219, 227, .84);
+  }
+  .note{
+    display: inline-flex; align-items: flex-start; gap: 9px;
+    margin-top: 26px; padding: 11px 18px;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: rgba(255,255,255,.03);
+    font-size: 11.5px; line-height: 1.7; color: var(--muted);
+    text-align: left;
+  }
+  .note b{ color: var(--champagne); font-weight: 500; }
+  .note svg{ flex: none; margin-top: 3px; }
+
+  /* ---------- countdown ---------- */
+  .cd{ margin-top: 42px; }
+  .cd-label{
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 11px; letter-spacing: .18em; color: var(--muted);
+  }
+  .cd-clock{
+    display: flex; justify-content: center; align-items: baseline; gap: 6px;
+    margin-top: 14px;
+  }
+  .cd-cell{ display: flex; align-items: baseline; gap: 4px; }
+  .cd-num{
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(40px, 12vw, 56px); line-height: 1;
+    letter-spacing: .04em; color: #fff;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 34px rgba(255,160,195,.3);
+  }
+  .cd-unit{ font-size: 11px; color: var(--muted); letter-spacing: .1em; }
+  .cd-sep{
+    font-family: var(--serif); font-size: 26px; color: var(--rose-dim);
+    transform: translateY(-6px);
+  }
+  .cd-live{
+    font-family: var(--serif); font-size: clamp(22px, 6vw, 30px);
+    color: #fff; letter-spacing: .08em; margin-top: 10px;
+  }
+
+  .scroll-cue{
+    display: inline-block; margin-top: 40px;
+    font-size: 12px; letter-spacing: .16em; color: rgba(240,220,228,.9);
+    text-decoration: none;
+  }
+  .scroll-cue span{ display: block; margin-top: 10px; color: var(--rose-deep); }
+
+  /* ---------- sections ---------- */
+  section{ padding-block: 68px; }
+  .center{ text-align: center; }
+  h2{
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(22px, 6.4vw, 29px); letter-spacing: .06em;
+    line-height: 1.6; margin: 14px 0 0; text-wrap: balance;
+  }
+  .body-copy{
+    margin: 26px auto 0; max-width: 30em;
+    font-size: 13px; line-height: 2.2; color: var(--muted);
+  }
+  .ornament{ color: var(--rose-deep); font-size: 15px; letter-spacing: .5em; }
+
+  /* ---------- tonight card ---------- */
+  .tonight{
+    margin-top: 34px; border: 1px solid var(--line); border-radius: 3px;
+    background: linear-gradient(180deg, #2a1020 0%, #1a0a14 100%);
+    overflow: hidden;
+  }
+  .tonight-bar{
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 11px 18px; border-bottom: 1px solid var(--line-soft);
+    background: rgba(0,0,0,.28);
+    font-size: 10px; letter-spacing: .22em; color: var(--rose-dim);
+  }
+  .tonight-body{ padding: 40px 26px 44px; text-align: center; }
+  .tonight-kicker{ font-size: 11.5px; color: var(--rose); letter-spacing: .18em; }
+  .tonight-title{
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(20px, 5.6vw, 26px); line-height: 1.75;
+    margin: 14px 0 0; letter-spacing: .04em; text-wrap: balance;
+  }
+  .tonight-note{ margin-top: 16px; font-size: 12px; color: var(--muted-2); }
+  .pill{
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 24px; padding: 10px 22px; border-radius: 999px;
+    background: linear-gradient(180deg, #c33d67, #8e2549);
+    color: #fff; font-size: 12.5px; letter-spacing: .08em;
+    box-shadow: 0 8px 24px rgba(150, 30, 70, .35);
+  }
+
+  /* ---------- bookmark ---------- */
+  .bookmark{
+    margin-top: 22px; padding: 26px 24px 28px;
+    border: 1px solid var(--line-soft); border-radius: 3px;
+    background: var(--panel);
+    display: grid; grid-template-columns: 44px 1fr; gap: 18px;
+  }
+  .bm-icon{
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid var(--line); display: grid; place-items: center;
+    background: rgba(255,255,255,.03); color: var(--champagne);
+  }
+  .bookmark h3{
+    font-family: var(--serif); font-weight: 500; font-size: 18px;
+    letter-spacing: .04em; margin: 6px 0 0;
+  }
+  .bookmark p{ margin: 12px 0 0; font-size: 12.5px; line-height: 2; color: var(--muted); }
+  .copy-btn{
+    margin-top: 18px; display: inline-flex; align-items: center; gap: 9px;
+    padding: 12px 20px; border: 1px solid rgba(240, 220, 228, .5);
+    background: transparent; color: #f6e9ee; border-radius: 2px;
+    font-family: var(--sans); font-size: 12.5px; letter-spacing: .06em;
+    cursor: pointer; transition: background .2s ease, border-color .2s ease;
+  }
+  .copy-btn:hover{ background: rgba(255,255,255,.07); border-color: #f6e9ee; }
+  .copy-hint{ margin-top: 12px; font-size: 10.5px; color: var(--muted-2); }
+
+  /* ---------- nights ---------- */
+  .nights{
+    margin-top: 34px; display: grid; gap: 12px;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+  @media (max-width: 560px){ .nights{ grid-template-columns: 1fr; } }
+  .night{
+    display: grid; grid-template-columns: 62px 1fr;
+    border: 1px solid var(--line-soft); border-radius: 2px;
+    background: var(--panel);
+    overflow: hidden;
+  }
+  .night-no{
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 2px; padding: 16px 0;
+    border-right: 1px solid var(--line-soft);
+    background: rgba(0,0,0,.22);
+  }
+  .night-no small{ font-size: 8px; letter-spacing: .2em; color: var(--muted-2); }
+  .night-no strong{
+    font-family: var(--serif); font-weight: 500; font-size: 21px;
+    color: var(--champagne); letter-spacing: .04em;
+    font-variant-numeric: tabular-nums;
+  }
+  .night-main{ padding: 15px 16px 16px; min-width: 0; text-align: left; }
+  .night-title{
+    font-family: var(--serif); font-size: 13.5px; line-height: 1.75;
+    letter-spacing: .03em; color: #f0e2e8;
+  }
+  .night-meta{
+    margin-top: 9px; display: inline-flex; align-items: center; gap: 6px;
+    font-size: 10.5px; color: var(--muted-2); letter-spacing: .06em;
+    font-variant-numeric: tabular-nums;
+  }
+  .night.is-open{
+    border-color: rgba(230, 167, 191, .34);
+    background: linear-gradient(180deg, #2b1120, var(--panel));
+  }
+  .night.is-open .night-no strong{ color: var(--rose); }
+  .night.is-open .night-meta{ color: var(--rose); }
+  .dot{
+    width: 5px; height: 5px; border-radius: 50%; background: var(--rose-deep);
+    box-shadow: 0 0 0 3px rgba(184,55,95,.2);
+  }
+
+  /* ---------- outro ---------- */
+  .outro{
+    text-align: center; padding: 74px 24px 66px;
+    background: linear-gradient(180deg, var(--ink) 0%, #1d0a15 100%);
+    border-top: 1px solid var(--line-soft);
+  }
+  .outro .moon{ color: var(--champagne); opacity: .8; }
+  .outro p{ margin: 22px 0 0; font-size: 12.5px; color: var(--muted); letter-spacing: .06em; }
+  .outro h2{ margin-top: 14px; }
+  .save-btn{
+    margin-top: 30px; display: inline-flex; align-items: center; gap: 9px;
+    padding: 14px 28px; border: 0; border-radius: 2px;
+    background: linear-gradient(180deg, #c33d67, #8e2549);
+    color: #fff; font-family: var(--sans); font-size: 13px; letter-spacing: .08em;
+    cursor: pointer; box-shadow: 0 10px 28px rgba(150,30,70,.34);
+    transition: filter .2s ease;
+  }
+  .save-btn:hover{ filter: brightness(1.1); }
+
+  footer{
+    padding: 34px 24px 46px; text-align: center;
+    background: var(--ink-deep);
+    font-size: 10.5px; line-height: 2; color: #5f4a55;
+  }
+  footer p{ margin: 0; }
+  footer .cr{ margin-top: 10px; letter-spacing: .1em; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-tag">
+    <svg width="10" height="12" viewBox="0 0 10 12" fill="none" aria-hidden="true"><path d="M2 5V3.5a3 3 0 016 0V5" stroke="currentColor" stroke-width="1"/><rect x="1" y="5" width="8" height="6" rx="1" stroke="currentColor" stroke-width="1"/></svg>
+    <span>GLO Limited</span><span class="bar"></span><span class="jp">毎晩22時公開</span>
+  </div>
+
+  <h1>もっと深く、<br>もっと激しく</h1>
+  <div class="sub">――大人の恋 ピックアップ</div>
+
+  <p class="lead">
+    誰かを求めずにはいられない夜。<br>
+    理性では止められない、濃密で刺激的な恋物語をあなたへ。
+  </p>
+
+  <div class="note">
+    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M10.5 8.2A5 5 0 015.8 3.5c0-.6.1-1.2.3-1.7A5 5 0 107 12.5a5 5 0 004.5-2.8 5 5 0 01-1 .5z" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></svg>
+    <span>SmartNewsやグノシーなどには配信しない、<b>ゴールドライフオンラインだけの特別企画</b>です。</span>
+  </div>
+
+  <div class="cd">
+    <div class="cd-label" id="cdLabel">
+      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 4v3.2l2 1.2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+      <span id="cdLabelText">第1夜が開くまで</span>
+    </div>
+    <div class="cd-clock" id="cdClock">
+      <span class="cd-cell"><span class="cd-num" id="cdD">--</span><span class="cd-unit">日</span></span>
+      <span class="cd-sep">:</span>
+      <span class="cd-cell"><span class="cd-num" id="cdH">--</span><span class="cd-unit">時間</span></span>
+      <span class="cd-sep">:</span>
+      <span class="cd-cell"><span class="cd-num" id="cdM">--</span><span class="cd-unit">分</span></span>
+    </div>
+    <div class="cd-live" id="cdLive" hidden>今夜も、22時に。</div>
+  </div>
+
+  <a class="scroll-cue" href="#tonight">今夜の物語を見る<span>↓</span></a>
+</div>
+
+<section class="pad center" id="tonight">
+  <div class="wrap">
+    <div class="ornament">❦</div>
+    <div class="eyebrow" style="margin-top:14px">Only here, after dark</div>
+    <h2>ここから先は、GLOだけ。</h2>
+    <p class="body-copy">
+      「ひとりの夜に、こっそり読みたい大人の恋」では お届けしきれなかった、その先へ。<br>
+      触れられるたびに高まる想い、誰にも明かせないふたりの時間。全10夜にわたり、昨日より深く、今夜はもっと激しい物語をお届けします。
+    </p>
+
+    <div class="tonight">
+      <div class="tonight-bar"><span>Tonight's Story</span><span>22:00 OPEN</span></div>
+      <div class="tonight-body">
+        <div class="tonight-kicker" id="tonightKicker">今夜の物語</div>
+        <div class="tonight-title" id="tonightTitle">公開日に、ここで新しい物語をご案内します</div>
+        <p class="tonight-note">部屋の明かりを少し落として、誰にも邪魔されないひとときに。</p>
+        <div class="pill">
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 4v3.2l2 1.2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+          毎晩22時更新
+        </div>
+      </div>
+    </div>
+
+    <div class="bookmark" style="text-align:left">
+      <div class="bm-icon">
+        <svg width="15" height="16" viewBox="0 0 16 18" fill="none" aria-hidden="true"><path d="M3.5 2h9v14l-4.5-3.4L3.5 16V2z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <div class="eyebrow">Your secret meeting place</div>
+        <h3>このページを、夜の待ち合わせ場所に。</h3>
+        <p>新しい物語は毎晩22時に公開します。明日の夜も迷わず戻れるよう、このページをブラウザの「ブックマーク」や「お気に入り」にご登録ください。</p>
+        <button class="copy-btn" type="button" data-copy>
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="4.5" y="4.5" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1"/><path d="M9.5 2.5h-7v7" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+          <span>このページのURLをコピー</span>
+        </button>
+        <p class="copy-hint">※コピーしたURLを保存して、明日の夜は保存した場所からこのページを直接お開きください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad center" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">Ten nights</div>
+    <h2>10夜だけの、秘密の時間</h2>
+    <p class="body-copy" style="margin-top:14px">公開された物語は、このページに一夜ずつ加わります。</p>
+    <div class="nights" id="nights"></div>
+  </div>
+</section>
+
+<div class="outro">
+  <div class="moon">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 14.5A7.5 7.5 0 019.5 6c0-.9.2-1.8.5-2.6A8 8 0 1020.6 14a7.5 7.5 0 01-2.6.5z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
+  </div>
+  <p>誰にも見られない、ひとりきりの時間に。</p>
+  <h2>明日の夜も、ここでお待ちしています。</h2>
+  <button class="save-btn" type="button" data-copy>
+    <svg width="13" height="15" viewBox="0 0 16 18" fill="none" aria-hidden="true"><path d="M3.5 2h9v14l-4.5-3.4L3.5 16V2z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
+    <span>明日のためにURLを保存する</span>
+  </button>
+</div>
+
+<footer>
+  <p>本企画には、性行為などの性的な表現を含む作品が掲載されています。苦手な方は閲覧をお控えください。</p>
+  <p>各作品は、著者の書籍から一部を抜粋・編集したものです。公開日時や掲載内容は、予告なく変更となる場合があります。</p>
+  <p class="cr">© GENTOSHA Media Consulting, Inc.</p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  // 全10夜：2026年9月16日(水)〜9月25日(金)、毎晩22:00（日本時間）
+  var TITLES = [
+    "誰にも言えない、最初の夜",
+    "触れられるたび、理性がほどけて",
+    "ふたりだけが知っている秘密",
+    "もっと深く、あなたを感じたい",
+    "戻れないと知りながら",
+    "夜が深まるほど、大胆に",
+    "声を抑えられないほどに",
+    "愛と欲望の境界で",
+    "今夜だけは、すべてを忘れて",
+    "最後の夜、もっと激しく"
+  ];
+  var WD = ["日", "月", "火", "水", "木", "金", "土"];
+
+  var nights = TITLES.map(function (title, i) {
+    // 22:00 JST = 13:00 UTC
+    var open = new Date(Date.UTC(2026, 8, 16 + i, 13, 0, 0));
+    // 表示用のJST日付
+    var jst = new Date(open.getTime() + 9 * 3600 * 1000);
+    return {
+      no: i + 1,
+      title: title,
+      open: open,
+      label: jst.getUTCMonth() + 1 + "月" + jst.getUTCDate() + "日（" + WD[jst.getUTCDay()] + "）22時公開"
+    };
+  });
+
+  var list = document.getElementById("nights");
+  nights.forEach(function (n) {
+    var el = document.createElement("div");
+    el.className = "night";
+    el.id = "night-" + n.no;
+    el.innerHTML =
+      '<div class="night-no"><small>NIGHT</small><strong>' + (n.no < 10 ? "0" + n.no : n.no) + "</strong></div>" +
+      '<div class="night-main"><div class="night-title">' + n.title + "</div>" +
+      '<div class="night-meta"><span class="meta-mark"></span><span class="meta-text"></span></div></div>';
+    list.appendChild(el);
+  });
+
+  var pad = function (v) { return v < 10 ? "0" + v : String(v); };
+
+  var lockSvg = '<svg width="9" height="10" viewBox="0 0 10 12" fill="none" aria-hidden="true"><path d="M2.5 5V3.6a2.5 2.5 0 015 0V5" stroke="currentColor" stroke-width=".9"/><rect x="1.4" y="5" width="7.2" height="5.6" rx=".8" stroke="currentColor" stroke-width=".9"/></svg>';
+
+  var elD = document.getElementById("cdD");
+  var elH = document.getElementById("cdH");
+  var elM = document.getElementById("cdM");
+  var elClock = document.getElementById("cdClock");
+  var elLive = document.getElementById("cdLive");
+  var elLabel = document.getElementById("cdLabelText");
+  var elKicker = document.getElementById("tonightKicker");
+  var elTitle = document.getElementById("tonightTitle");
+
+  function render() {
+    var now = Date.now();
+    var next = null;
+    var latest = null;
+
+    nights.forEach(function (n) {
+      var card = document.getElementById("night-" + n.no);
+      var mark = card.querySelector(".meta-mark");
+      var text = card.querySelector(".meta-text");
+      if (now >= n.open.getTime()) {
+        card.classList.add("is-open");
+        mark.innerHTML = '<span class="dot"></span>';
+        text.textContent = "公開中";
+        latest = n;
+      } else {
+        card.classList.remove("is-open");
+        mark.innerHTML = lockSvg;
+        text.textContent = n.label;
+        if (!next) next = n;
+      }
+    });
+
+    if (next) {
+      var diff = next.open.getTime() - now;
+      var mins = Math.floor(diff / 60000);
+      var d = Math.floor(mins / 1440);
+      var h = Math.floor((mins % 1440) / 60);
+      var m = mins % 60;
+      elD.textContent = pad(d);
+      elH.textContent = pad(h);
+      elM.textContent = pad(m);
+      elClock.hidden = false;
+      elLive.hidden = true;
+      elLabel.textContent = "第" + next.no + "夜が開くまで";
+    } else {
+      elClock.hidden = true;
+      elLive.hidden = false;
+      elLive.textContent = "全10夜、公開中。";
+      elLabel.textContent = "最後の夜まで公開しました";
+    }
+
+    if (latest) {
+      elKicker.textContent = latest.no === 10 ? "最終夜・公開中" : "第" + latest.no + "夜・公開中";
+      elTitle.textContent = latest.title;
+    } else {
+      elKicker.textContent = "第1夜は9月16日（水）22時";
+      elTitle.textContent = "公開日に、ここで新しい物語をご案内します";
+    }
+  }
+
+  render();
+  setInterval(render, 20000);
+
+  // URLコピー
+  function flash(btn, msg) {
+    var span = btn.querySelector("span");
+    var original = span.textContent;
+    span.textContent = msg;
+    setTimeout(function () { span.textContent = original; }, 2200);
+  }
+
+  // 読者に保存してもらう特集ページのURL
+  var PAGE_URL = "https://renaissance-media.jp/category/gr2004";
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var url = PAGE_URL;
+      var done = function () { flash(btn, "URLをコピーしました"); };
+      var fail = function () { flash(btn, "コピーできませんでした"); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done, function () { legacy(url) ? done() : fail(); });
+      } else {
+        legacy(url) ? done() : fail();
+      }
+    });
+  });
+
+  function legacy(url) {
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = url;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      return ok;
+    } catch (e) { return false; }
+  }
+})();
+</script>
+</body>
+</html>
