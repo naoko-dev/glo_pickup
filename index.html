@@ -159,11 +159,19 @@
     font-size: 10px; letter-spacing: .22em; color: var(--rose-dim);
   }
   .tonight-body{ padding: 40px 26px 44px; text-align: center; }
-  .tonight-kicker{ font-size: 11.5px; color: var(--rose); letter-spacing: .18em; }
+  .tonight-kicker{
+    display: inline-block;
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(16px, 4.6vw, 20px); line-height: 1.5;
+    color: #fbdfe9; letter-spacing: .1em;
+    padding-bottom: 9px; border-bottom: 1px solid rgba(230,167,191,.4);
+    text-shadow: 0 0 26px rgba(255,150,190,.35);
+  }
   .tonight-title{
     font-family: var(--serif); font-weight: 500;
-    font-size: clamp(20px, 5.6vw, 26px); line-height: 1.75;
-    margin: 14px 0 0; letter-spacing: .04em; text-wrap: balance;
+    font-size: clamp(16px, 4.4vw, 20px); line-height: 1.95;
+    margin: 14px auto 0; max-width: 26em;
+    letter-spacing: .03em; text-wrap: pretty;
   }
   .tonight-note{ margin-top: 16px; font-size: 12px; color: var(--muted-2); }
   .pill{
@@ -199,51 +207,113 @@
     cursor: pointer; transition: background .2s ease, border-color .2s ease;
   }
   .copy-btn:hover{ background: rgba(255,255,255,.07); border-color: #f6e9ee; }
-  .copy-hint{ margin-top: 12px; font-size: 10.5px; color: var(--muted-2); }
+  .copy-hint{ margin-top: 12px; font-size: 10.5px; color: var(--muted-2); line-height: 1.8; }
+
+  /* ---------- home-screen steps ---------- */
+  .os-tabs{ margin-top: 20px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .os-tab{
+    padding: 7px 15px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--line); background: transparent;
+    color: var(--muted); font-family: var(--sans); font-size: 11.5px;
+    letter-spacing: .06em; transition: color .2s ease, border-color .2s ease, background .2s ease;
+  }
+  .os-tab:hover{ color: var(--text); }
+  .os-tab[aria-selected="true"]{
+    background: rgba(230,167,191,.12); border-color: rgba(230,167,191,.5);
+    color: #fbe9f0;
+  }
+  .steps{
+    margin: 16px 0 0; padding: 0; list-style: none;
+    display: flex; flex-direction: column; gap: 10px;
+    counter-reset: step;
+  }
+  .steps li{
+    display: grid; grid-template-columns: 22px 1fr; gap: 10px;
+    font-size: 12.5px; line-height: 1.85; color: var(--text);
+  }
+  .steps li::before{
+    counter-increment: step; content: counter(step);
+    width: 22px; height: 22px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(230,167,191,.14); color: var(--rose);
+    font-family: var(--serif); font-size: 12px; line-height: 1;
+    margin-top: 2px;
+  }
+  .steps b{ color: #fbe9f0; font-weight: 500; }
+  .steps-note{
+    margin: 14px 0 0; font-size: 11px; line-height: 1.85; color: var(--muted);
+  }
+  .steps-note a{ color: var(--rose); text-underline-offset: 3px; }
+  .fallback{
+    margin-top: 20px; padding-top: 16px;
+    border-top: 1px solid var(--line-soft);
+  }
 
   /* ---------- nights ---------- */
-  .nights{
-    margin-top: 34px; display: grid; gap: 12px;
-    grid-template-columns: repeat(2, minmax(0,1fr));
+  .nights-panel{
+    margin-top: 30px; padding: 8px 22px 10px;
+    border-top: 1px solid rgba(230,167,191,.28);
+    border-bottom: 1px solid rgba(230,167,191,.28);
+    background:
+      radial-gradient(110% 60% at 50% 0%, rgba(122,20,60,.35), rgba(0,0,0,0) 70%),
+      linear-gradient(180deg, #1c0b16 0%, #150813 100%);
   }
-  @media (max-width: 560px){ .nights{ grid-template-columns: 1fr; } }
+  .nights{ display: flex; flex-direction: column; }
   .night{
-    display: grid; grid-template-columns: 62px 1fr;
-    border: 1px solid var(--line-soft); border-radius: 2px;
-    background: var(--panel);
-    overflow: hidden;
+    display: grid; grid-template-columns: 46px 1fr; gap: 16px;
+    padding: 20px 0; text-align: left; min-width: 0;
+    border-bottom: 1px dashed rgba(230,167,191,.14);
+  }
+  .night:last-child{ border-bottom: 0; }
+
+  .night-rail{ position: relative; }
+  .night-rail::before{
+    content: ""; position: absolute; left: 50%; top: -20px; bottom: -20px;
+    width: 1px; background: rgba(230,167,191,.18); transform: translateX(-50%);
+  }
+  .night:first-child .night-rail::before{ top: 22px; }
+  .night:last-child .night-rail::before{ bottom: auto; height: 42px; }
+  .night-num{
+    position: relative; z-index: 1;
+    width: 44px; height: 44px; margin: 0 auto; border-radius: 50%;
+    display: grid; place-items: center; gap: 0;
+    background: #170a13; border: 1px solid rgba(230,167,191,.24);
+    font-family: var(--serif); font-weight: 500; font-size: 17px;
+    color: var(--champagne); letter-spacing: .02em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .night-head{
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 9px;
   }
   .night-no{
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 2px; padding: 16px 0;
-    border-right: 1px solid var(--line-soft);
-    background: rgba(0,0,0,.22);
+    font-size: 8.5px; letter-spacing: .24em; color: var(--muted-2);
   }
-  .night-no small{ font-size: 8px; letter-spacing: .2em; color: var(--muted-2); }
-  .night-no strong{
-    font-family: var(--serif); font-weight: 500; font-size: 21px;
-    color: var(--champagne); letter-spacing: .04em;
-    font-variant-numeric: tabular-nums;
-  }
-  .night-main{ padding: 15px 16px 16px; min-width: 0; text-align: left; }
   .night-title{
-    font-family: var(--serif); font-size: 13.5px; line-height: 1.75;
-    letter-spacing: .03em; color: #f0e2e8;
+    font-family: var(--serif); font-size: 13.5px; line-height: 1.95;
+    letter-spacing: .02em; color: #efdfe6;
   }
   .night-meta{
-    margin-top: 9px; display: inline-flex; align-items: center; gap: 6px;
+    display: inline-flex; align-items: center; gap: 6px;
     font-size: 10.5px; color: var(--muted-2); letter-spacing: .06em;
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
   }
-  .night.is-open{
-    border-color: rgba(230, 167, 191, .34);
-    background: linear-gradient(180deg, #2b1120, var(--panel));
+  .night.is-open .night-num{
+    background: linear-gradient(180deg, #b8375f, #7d1f3f);
+    border-color: rgba(255,190,214,.6); color: #fff;
+    box-shadow: 0 0 0 4px rgba(184,55,95,.16);
   }
-  .night.is-open .night-no strong{ color: var(--rose); }
+  .night.is-open .night-title{ color: #fff; }
   .night.is-open .night-meta{ color: var(--rose); }
   .dot{
     width: 5px; height: 5px; border-radius: 50%; background: var(--rose-deep);
     box-shadow: 0 0 0 3px rgba(184,55,95,.2);
+  }
+  @media (min-width: 620px){
+    .nights-panel{ padding-inline: 30px; }
+    .night{ grid-template-columns: 54px 1fr; gap: 22px; }
+    .night-title{ font-size: 14px; }
   }
 
   /* ---------- outro ---------- */
@@ -263,6 +333,7 @@
     cursor: pointer; box-shadow: 0 10px 28px rgba(150,30,70,.34);
     transition: filter .2s ease;
   }
+  .save-btn{ text-decoration: none; }
   .save-btn:hover{ filter: brightness(1.1); }
 
   footer{
@@ -339,19 +410,32 @@
       </div>
     </div>
 
-    <div class="bookmark" style="text-align:left">
+    <div class="bookmark" id="save" style="text-align:left">
       <div class="bm-icon">
-        <svg width="15" height="16" viewBox="0 0 16 18" fill="none" aria-hidden="true"><path d="M3.5 2h9v14l-4.5-3.4L3.5 16V2z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="13" height="13" rx="3.2" stroke="currentColor" stroke-width="1.1"/><path d="M9 6v6M6 9h6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
       </div>
       <div>
         <div class="eyebrow">Your secret meeting place</div>
-        <h3>このページを、夜の待ち合わせ場所に。</h3>
-        <p>新しい物語は毎晩22時に公開します。明日の夜も迷わず戻れるよう、このページをブラウザの「ブックマーク」や「お気に入り」にご登録ください。</p>
-        <button class="copy-btn" type="button" data-copy>
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="4.5" y="4.5" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1"/><path d="M9.5 2.5h-7v7" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
-          <span>このページのURLをコピー</span>
-        </button>
-        <p class="copy-hint">※コピーしたURLを保存して、明日の夜は保存した場所からこのページを直接お開きください。</p>
+        <h3>このページを、ホーム画面やお気に入りに。</h3>
+        <p>新しい物語は毎晩22時に公開します。スマートフォンならホーム画面に追加、パソコンならブックマーク（お気に入り）に登録しておけば、明日の夜もまっすぐここへ戻ってこられます。アプリのインストールは不要で、容量もほとんど使いません。</p>
+
+        <div class="os-tabs" role="tablist" aria-label="お使いの端末">
+          <button class="os-tab" type="button" role="tab" data-os="ios" aria-selected="false">iPhone</button>
+          <button class="os-tab" type="button" role="tab" data-os="android" aria-selected="false">Android</button>
+          <button class="os-tab" type="button" role="tab" data-os="pc" aria-selected="false">パソコン</button>
+        </div>
+
+        <ol class="steps" id="steps"></ol>
+
+        <p class="steps-note" id="stepsNote"></p>
+
+        <div class="fallback">
+          <button class="copy-btn" type="button" data-copy style="margin-top:0">
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="4.5" y="4.5" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1"/><path d="M9.5 2.5h-7v7" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+            <span>うまくいかないときはURLをコピー</span>
+          </button>
+          <p class="copy-hint">コピーしたURLをメモアプリやLINEの「Keepメモ」に貼り付けておくと、明日の夜そこから開けます。<br>renaissance-media.jp/category/gr2004</p>
+        </div>
       </div>
     </div>
   </div>
@@ -362,7 +446,9 @@
     <div class="eyebrow">Ten nights</div>
     <h2>10夜だけの、秘密の時間</h2>
     <p class="body-copy" style="margin-top:14px">公開された物語は、このページに一夜ずつ加わります。</p>
-    <div class="nights" id="nights"></div>
+    <div class="nights-panel">
+      <div class="nights" id="nights"></div>
+    </div>
   </div>
 </section>
 
@@ -372,10 +458,10 @@
   </div>
   <p>誰にも見られない、ひとりきりの時間に。</p>
   <h2>明日の夜も、ここでお待ちしています。</h2>
-  <button class="save-btn" type="button" data-copy>
-    <svg width="13" height="15" viewBox="0 0 16 18" fill="none" aria-hidden="true"><path d="M3.5 2h9v14l-4.5-3.4L3.5 16V2z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
-    <span>明日のためにURLを保存する</span>
-  </button>
+  <a class="save-btn" href="#save">
+    <svg width="15" height="15" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="13" height="13" rx="3.2" stroke="currentColor" stroke-width="1.1"/><path d="M9 6v6M6 9h6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+    <span>ホーム画面・お気に入りに追加する</span>
+  </a>
 </div>
 
 <footer>
@@ -390,16 +476,16 @@
 
   // 全10夜：2026年9月16日(水)〜9月25日(金)、毎晩22:00（日本時間）
   var TITLES = [
-    "誰にも言えない、最初の夜",
-    "触れられるたび、理性がほどけて",
-    "ふたりだけが知っている秘密",
-    "もっと深く、あなたを感じたい",
-    "戻れないと知りながら",
-    "夜が深まるほど、大胆に",
-    "声を抑えられないほどに",
-    "愛と欲望の境界で",
-    "今夜だけは、すべてを忘れて",
-    "最後の夜、もっと激しく"
+    "「どこが気持ちいい？」と聞かれるたび、恥ずかしさでどうにかなりそうだった。慣れた愛撫に、膝から力が抜けて…",
+    "眠ってしまった24歳の彼の手をそっと握った、その時だった。むくっと起き上がった彼が、私の身体に覆い被さってきて…",
+    "彼女を抱くと、体中の縛りが解き放たれる。「急がないで、お願い、ゆっくりして」と喘ぐ声を聞きながら、俺は…",
+    "気が付けば、妻とでは考えられないほど激しく義姉を抱いていた。そこに潜んでいたのは、感じたこともない興奮と快楽で…",
+    "「私でいいんですか？」「今、凄く抱きたい、君がいい！　おいで」――手を引かれた先は彼の寝室だった",
+    "抱き上げられて寝室へ…彼は「泣かないで」と言いながらも、激しく求めてきて…指先で触れられるたび涙が止まらない。",
+    "おしゃべりするだけ…と入ったホテル。ベッドに座った瞬間、彼氏から電話が！でも「そんな彼氏、忘れさせてあげる」と押し倒されて…",
+    "【時代小説】「今度は手を使わずに…」――初夜の床で頼朝が政子に教えた性の作法は、想像もしないものだった",
+    "当時はまだ初々しい人妻だった私。結婚式披露宴を済ませた翌日の夜、夫と子づくりをしょうと…",
+    "「壁に手をついて足を少し広げて」――泡越しに触れる彼の手。私は思わず声を漏らしてしまった"
   ];
   var WD = ["日", "月", "火", "水", "木", "金", "土"];
 
@@ -422,9 +508,14 @@
     el.className = "night";
     el.id = "night-" + n.no;
     el.innerHTML =
-      '<div class="night-no"><small>NIGHT</small><strong>' + (n.no < 10 ? "0" + n.no : n.no) + "</strong></div>" +
-      '<div class="night-main"><div class="night-title">' + n.title + "</div>" +
-      '<div class="night-meta"><span class="meta-mark"></span><span class="meta-text"></span></div></div>';
+      '<div class="night-rail"><span class="night-num">' + (n.no < 10 ? "0" + n.no : n.no) + "</span></div>" +
+      "<div>" +
+        '<div class="night-head">' +
+          '<span class="night-no">' + (n.no === 10 ? "LAST NIGHT" : "NIGHT") + "</span>" +
+          '<span class="night-meta"><span class="meta-mark"></span><span class="meta-text"></span></span>' +
+        "</div>" +
+        '<div class="night-title">' + n.title + "</div>" +
+      "</div>";
     list.appendChild(el);
   });
 
@@ -501,6 +592,60 @@
     span.textContent = msg;
     setTimeout(function () { span.textContent = original; }, 2200);
   }
+
+  // ---- ホーム画面への追加手順 ----
+  var STEPS = {
+    ios: {
+      label: "iPhone・iPad（Safari）",
+      steps: [
+        "このページを開いたまま、画面下の<b>共有ボタン</b>（四角に上向きの矢印）を押します",
+        "メニューを下にスクロールして<b>「ホーム画面に追加」</b>を選びます",
+        "右上の<b>「追加」</b>を押せば完了です"
+      ],
+      note: "※Safari以外のブラウザでは「ホーム画面に追加」が出ないことがあります。その場合はSafariで開き直してください。"
+    },
+    android: {
+      label: "Android（Chrome）",
+      steps: [
+        "画面右上の<b>メニュー</b>（縦に点が3つ並んだボタン）を押します",
+        "<b>「ホーム画面に追加」</b>を選びます",
+        "<b>「追加」</b>を押せば完了です"
+      ],
+      note: "※機種によっては「アプリをインストール」と表示されますが、同じように追加できます。"
+    },
+    pc: {
+      label: "パソコン",
+      steps: [
+        "アドレスバー右端の<b>星のマーク（☆）</b>を押します。キーボードなら <b>Ctrl+D</b>（Macは <b>⌘+D</b>）でも同じです",
+        "表示された画面で<b>「完了」</b>を押すと、ブックマーク（お気に入り）に登録されます",
+        "明日の夜は、ブックマークから直接このページを開いてください"
+      ],
+      note: "※スマートフォンでご覧の方は、上のタブから端末を選んでください。ホーム画面へのアイコン追加をご案内します。"
+    }
+  };
+
+  function detectOS() {
+    var ua = navigator.userAgent || "";
+    if (/iPhone|iPad|iPod/i.test(ua)) return "ios";
+    if (/Android/i.test(ua)) return "android";
+    if (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) return "ios"; // iPadOS
+    return "pc";
+  }
+
+  function showSteps(os) {
+    var data = STEPS[os] || STEPS.pc;
+    var ol = document.getElementById("steps");
+    ol.innerHTML = data.steps.map(function (s) { return "<li><span>" + s + "</span></li>"; }).join("");
+    document.getElementById("stepsNote").innerHTML = data.note;
+    Array.prototype.forEach.call(document.querySelectorAll(".os-tab"), function (t) {
+      t.setAttribute("aria-selected", t.getAttribute("data-os") === os ? "true" : "false");
+    });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".os-tab"), function (t) {
+    t.addEventListener("click", function () { showSteps(t.getAttribute("data-os")); });
+  });
+  showSteps(detectOS());
 
   // 読者に保存してもらう特集ページのURL
   var PAGE_URL = "https://renaissance-media.jp/category/gr2004";
