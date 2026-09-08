@@ -32,6 +32,8 @@
   html{ background: var(--ink-deep); }
   body{
     margin:0;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
     background: var(--ink);
     color: var(--text);
     font-family: var(--sans);
@@ -62,6 +64,8 @@
   /* ---------- hero ---------- */
   .hero{
     position: relative; overflow: hidden;
+    flex: 1 0 auto;
+    display: flex; flex-direction: column; justify-content: center;
     padding: 44px 24px 48px;
     text-align: center;
     background:
@@ -359,16 +363,18 @@
     letter-spacing: .06em;
   }
   .list-btn:hover{ background: rgba(230,167,191,.18); border-color: #f6d8e4; }
-  .read-link{
-    display: inline-flex; align-items: center; gap: 7px;
-    margin-top: 11px; padding: 9px 18px; border-radius: 999px;
+  .read-chip{
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 13px; border-radius: 999px;
     background: linear-gradient(180deg, #c33d67, #8e2549);
     color: #fff; text-decoration: none;
-    font-family: var(--sans); font-size: 12.5px; font-weight: 500;
-    letter-spacing: .06em;
-    box-shadow: 0 5px 16px rgba(150,30,70,.4);
+    font-family: var(--sans); font-size: 11.5px; font-weight: 500;
+    letter-spacing: .06em; line-height: 1.4; white-space: nowrap;
+    box-shadow: 0 3px 10px rgba(150,30,70,.4);
   }
-  .read-link:hover{ filter: brightness(1.12); }
+  .read-chip:hover{ filter: brightness(1.12); }
+  .night-a{ color: inherit; text-decoration: none; }
+  .night-a:hover{ text-decoration: underline; text-underline-offset: 4px; }
   .read-cta{
     display: inline-flex; align-items: center; gap: 9px;
     margin-top: 20px; padding: 14px 30px; border-radius: 999px;
@@ -425,6 +431,15 @@
     .steps li{ font-size: 12px; line-height: 1.75; }
     .night{ padding: 13px 0; }
     .lead{ font-size: 13px; }
+  }
+
+  @media (max-width: 345px){
+    .night{ gap: 11px; }
+    .night-num{ width: 36px; height: 36px; font-size: 15px; }
+    .night-title{ font-size: 11.8px; line-height: 1.7; }
+    .bookmark{ grid-template-columns: 1fr; gap: 10px; }
+    .bookmark p, .steps li{ font-size: 11.5px; }
+    .os-tab{ font-size: 11.5px; min-height: 56px; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -620,9 +635,9 @@
         '<div class="night-head">' +
           '<span class="night-no">' + (n.no === 10 ? "LAST NIGHT" : "NIGHT") + "</span>" +
           '<span class="night-meta"><span class="meta-mark"></span><span class="meta-text"></span></span>' +
+          '<span class="night-link"></span>' +
         "</div>" +
-        '<div class="night-title">' + n.title + "</div>" +
-        '<div class="night-link"></div>' +
+        '<div class="night-title"></div>' +
       "</div>";
     list.appendChild(el);
   });
@@ -683,15 +698,20 @@
       var mark = card.querySelector(".meta-mark");
       var text = card.querySelector(".meta-text");
       var link = card.querySelector(".night-link");
+      var ttl = card.querySelector(".night-title");
       if (now >= n.open.getTime()) {
         card.classList.add("is-open");
         mark.innerHTML = '<span class="dot"></span>';
         text.textContent = "公開中";
         if (link) {
           link.innerHTML = n.url
-            ? '<a class="read-link" href="' + n.url + '" target="_top">' +
-              (n.no === 10 ? "最終夜" : "第" + n.no + "夜") + "を読む" + arrowSvg + "</a>"
+            ? '<a class="read-chip" href="' + n.url + '" target="_top">読む' + arrowSvg + "</a>"
             : "";
+        }
+        if (ttl) {
+          ttl.innerHTML = n.url
+            ? '<a class="night-a" href="' + n.url + '" target="_top">' + n.title + "</a>"
+            : n.title;
         }
         latest = n;
       } else {
@@ -699,6 +719,7 @@
         mark.innerHTML = lockSvg;
         text.textContent = n.label;
         if (link) { link.innerHTML = ""; }
+        if (ttl) { ttl.innerHTML = n.title; }
         if (!next) next = n;
       }
     });
