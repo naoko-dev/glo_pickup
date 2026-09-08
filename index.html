@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="もっと深く、もっと激しく――大人の恋 ピックアップ。ゴールドライフオンライン限定、9月16日（水）から毎晩22時公開の全10夜。">
+<meta name="description" content="もっと深く、もっと激しく――大人の恋愛 ピックアップ。ゴールドライフオンライン限定、9月16日（水）から毎晩22時公開の全10夜。">
 <title>もっと深く、もっと激しく</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +29,7 @@
     --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
   }
 
+  html{ background: var(--ink-deep); }
   body{
     margin:0;
     background: var(--ink);
@@ -51,10 +52,17 @@
     color: var(--rose-dim); font-weight: 500;
   }
 
+  .testbar{
+    padding: 10px 16px; text-align: center;
+    background: #3d2a06; color: #ffd88a;
+    font-size: 11.5px; line-height: 1.6; letter-spacing: .04em;
+    border-bottom: 1px solid rgba(255,216,138,.35);
+  }
+
   /* ---------- hero ---------- */
   .hero{
     position: relative; overflow: hidden;
-    padding: 52px 24px 64px;
+    padding: 44px 24px 48px;
     text-align: center;
     background:
       radial-gradient(120% 78% at 50% -12%, #6d1338 0%, #3a0a20 32%, rgba(18,7,16,0) 72%),
@@ -83,8 +91,8 @@
     letter-spacing: .16em; color: var(--champagne); margin-top: 20px;
   }
   .lead{
-    margin: 30px auto 0; max-width: 30em;
-    font-size: 13.5px; line-height: 2.15; color: rgba(238, 219, 227, .84);
+    margin: 26px auto 0; max-width: 30em;
+    font-size: 13.5px; line-height: 2.0; color: rgba(238, 219, 227, .84);
   }
   .note{
     display: inline-flex; align-items: flex-start; gap: 9px;
@@ -98,10 +106,15 @@
   .note svg{ flex: none; margin-top: 3px; }
 
   /* ---------- countdown ---------- */
-  .cd{ margin-top: 42px; }
+  .cd{ margin-top: 34px; }
   .cd-label{
-    display: inline-flex; align-items: center; gap: 7px;
-    font-size: 11px; letter-spacing: .18em; color: var(--muted);
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 20px; border-radius: 999px;
+    border: 1px solid rgba(230,167,191,.4);
+    background: rgba(255,255,255,.06);
+    font-size: clamp(13px, 3.6vw, 15px); font-weight: 500;
+    letter-spacing: .14em; color: #fbe9f0;
+    text-shadow: 0 0 20px rgba(255,150,190,.4);
   }
   .cd-clock{
     display: flex; justify-content: center; align-items: baseline; gap: 6px;
@@ -126,23 +139,25 @@
   }
 
   .scroll-cue{
-    display: inline-block; margin-top: 40px;
+    display: inline-block; margin-top: 30px;
     font-size: 12px; letter-spacing: .16em; color: rgba(240,220,228,.9);
     text-decoration: none;
   }
   .scroll-cue span{ display: block; margin-top: 10px; color: var(--rose-deep); }
 
   /* ---------- sections ---------- */
-  section{ padding-block: 68px; }
+  section{ padding-block: 50px; }
   .center{ text-align: center; }
   h2{
-    font-family: var(--serif); font-weight: 500;
-    font-size: clamp(22px, 6.4vw, 29px); letter-spacing: .06em;
-    line-height: 1.6; margin: 14px 0 0; text-wrap: balance;
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(26px, 7.6vw, 36px); letter-spacing: .06em;
+    line-height: 1.55; margin: 16px 0 0; text-wrap: balance;
+    color: #fff;
+    text-shadow: 0 0 34px rgba(255,165,200,.38);
   }
   .body-copy{
-    margin: 26px auto 0; max-width: 30em;
-    font-size: 13px; line-height: 2.2; color: var(--muted);
+    margin: 22px auto 0; max-width: 30em;
+    font-size: 13px; line-height: 2.0; color: var(--muted);
   }
   .ornament{ color: var(--rose-deep); font-size: 15px; letter-spacing: .5em; }
 
@@ -158,7 +173,7 @@
     background: rgba(0,0,0,.28);
     font-size: 10px; letter-spacing: .22em; color: var(--rose-dim);
   }
-  .tonight-body{ padding: 40px 26px 44px; text-align: center; }
+  .tonight-body{ padding: 32px 22px 34px; text-align: center; }
   .tonight-kicker{
     display: inline-block;
     font-family: var(--serif); font-weight: 500;
@@ -184,7 +199,7 @@
 
   /* ---------- bookmark ---------- */
   .bookmark{
-    margin-top: 22px; padding: 26px 24px 28px;
+    margin-top: 20px; padding: 22px 20px 24px;
     border: 1px solid var(--line-soft); border-radius: 3px;
     background: var(--panel);
     display: grid; grid-template-columns: 44px 1fr; gap: 18px;
@@ -198,7 +213,7 @@
     font-family: var(--serif); font-weight: 500; font-size: 18px;
     letter-spacing: .04em; margin: 6px 0 0;
   }
-  .bookmark p{ margin: 12px 0 0; font-size: 12.5px; line-height: 2; color: var(--muted); }
+  .bookmark p{ margin: 11px 0 0; font-size: 12.5px; line-height: 1.9; color: var(--muted); }
   .copy-btn{
     margin-top: 18px; display: inline-flex; align-items: center; gap: 9px;
     padding: 12px 20px; border: 1px solid rgba(240, 220, 228, .5);
@@ -210,17 +225,38 @@
   .copy-hint{ margin-top: 12px; font-size: 10.5px; color: var(--muted-2); line-height: 1.8; }
 
   /* ---------- home-screen steps ---------- */
-  .os-tabs{ margin-top: 20px; display: flex; gap: 6px; flex-wrap: wrap; }
-  .os-tab{
-    padding: 7px 15px; border-radius: 999px; cursor: pointer;
-    border: 1px solid var(--line); background: transparent;
-    color: var(--muted); font-family: var(--sans); font-size: 11.5px;
-    letter-spacing: .06em; transition: color .2s ease, border-color .2s ease, background .2s ease;
+  .os-lead{
+    margin: 20px 0 0; font-size: 12px; line-height: 1.7;
+    color: var(--champagne); letter-spacing: .04em;
   }
-  .os-tab:hover{ color: var(--text); }
+  .os-tabs{
+    margin-top: 10px; display: grid; gap: 8px;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+  .os-tab{
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 5px; min-height: 62px; padding: 10px 4px;
+    border-radius: 10px; cursor: pointer;
+    border: 1px solid rgba(230,167,191,.38);
+    background: rgba(255,255,255,.06);
+    color: #f0dde5; font-family: var(--sans); font-size: 13px; font-weight: 500;
+    letter-spacing: .04em; line-height: 1.2;
+    box-shadow: 0 2px 0 rgba(0,0,0,.35);
+    transition: background .2s ease, border-color .2s ease, transform .1s ease;
+  }
+  .os-tab svg{ opacity: .85; }
+  .os-tab:hover{ background: rgba(255,255,255,.12); }
+  .os-tab:active{ transform: translateY(1px); }
   .os-tab[aria-selected="true"]{
-    background: rgba(230,167,191,.12); border-color: rgba(230,167,191,.5);
-    color: #fbe9f0;
+    background: linear-gradient(180deg, #c33d67, #8e2549);
+    border-color: rgba(255,196,218,.85);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(150,30,70,.4);
+  }
+  .os-tab[aria-selected="true"] svg{ opacity: 1; }
+  .os-tab[aria-selected="true"]::after{
+    content: "選択中"; font-size: 9px; letter-spacing: .12em;
+    color: rgba(255,255,255,.85);
   }
   .steps{
     margin: 16px 0 0; padding: 0; list-style: none;
@@ -251,7 +287,7 @@
 
   /* ---------- nights ---------- */
   .nights-panel{
-    margin-top: 30px; padding: 8px 22px 10px;
+    margin-top: 24px; padding: 4px 20px 6px;
     border-top: 1px solid rgba(230,167,191,.28);
     border-bottom: 1px solid rgba(230,167,191,.28);
     background:
@@ -261,14 +297,14 @@
   .nights{ display: flex; flex-direction: column; }
   .night{
     display: grid; grid-template-columns: 46px 1fr; gap: 16px;
-    padding: 20px 0; text-align: left; min-width: 0;
+    padding: 15px 0; text-align: left; min-width: 0;
     border-bottom: 1px dashed rgba(230,167,191,.14);
   }
   .night:last-child{ border-bottom: 0; }
 
   .night-rail{ position: relative; }
   .night-rail::before{
-    content: ""; position: absolute; left: 50%; top: -20px; bottom: -20px;
+    content: ""; position: absolute; left: 50%; top: -15px; bottom: -15px;
     width: 1px; background: rgba(230,167,191,.18); transform: translateX(-50%);
   }
   .night:first-child .night-rail::before{ top: 22px; }
@@ -291,12 +327,16 @@
     font-size: 8.5px; letter-spacing: .24em; color: var(--muted-2);
   }
   .night-title{
-    font-family: var(--serif); font-size: 13.5px; line-height: 1.95;
+    font-family: var(--serif); font-size: 13.5px; line-height: 1.78;
     letter-spacing: .02em; color: #efdfe6;
   }
   .night-meta{
     display: inline-flex; align-items: center; gap: 6px;
-    font-size: 10.5px; color: var(--muted-2); letter-spacing: .06em;
+    padding: 4px 11px; border-radius: 999px;
+    border: 1px solid rgba(230,167,191,.3);
+    background: rgba(230,167,191,.09);
+    font-size: 12px; font-weight: 500; color: #ecd9c1;
+    letter-spacing: .04em; line-height: 1.4;
     font-variant-numeric: tabular-nums; white-space: nowrap;
   }
   .night.is-open .night-num{
@@ -305,7 +345,40 @@
     box-shadow: 0 0 0 4px rgba(184,55,95,.16);
   }
   .night.is-open .night-title{ color: #fff; }
-  .night.is-open .night-meta{ color: var(--rose); }
+  .night.is-open .night-meta{
+    color: #fff; border-color: rgba(255,190,214,.55);
+    background: rgba(184,55,95,.42);
+  }
+  .list-btn{
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 16px; padding: 11px 22px; border-radius: 999px;
+    border: 1px solid rgba(230,167,191,.55);
+    background: rgba(230,167,191,.08);
+    color: #fbe9f0; text-decoration: none;
+    font-family: var(--sans); font-size: 12.5px; font-weight: 500;
+    letter-spacing: .06em;
+  }
+  .list-btn:hover{ background: rgba(230,167,191,.18); border-color: #f6d8e4; }
+  .read-link{
+    display: inline-flex; align-items: center; gap: 7px;
+    margin-top: 11px; padding: 9px 18px; border-radius: 999px;
+    background: linear-gradient(180deg, #c33d67, #8e2549);
+    color: #fff; text-decoration: none;
+    font-family: var(--sans); font-size: 12.5px; font-weight: 500;
+    letter-spacing: .06em;
+    box-shadow: 0 5px 16px rgba(150,30,70,.4);
+  }
+  .read-link:hover{ filter: brightness(1.12); }
+  .read-cta{
+    display: inline-flex; align-items: center; gap: 9px;
+    margin-top: 20px; padding: 14px 30px; border-radius: 999px;
+    background: linear-gradient(180deg, #c33d67, #8e2549);
+    color: #fff; text-decoration: none;
+    font-family: var(--sans); font-size: 14px; font-weight: 500;
+    letter-spacing: .08em;
+    box-shadow: 0 10px 26px rgba(150,30,70,.45);
+  }
+  .read-cta:hover{ filter: brightness(1.12); }
   .dot{
     width: 5px; height: 5px; border-radius: 50%; background: var(--rose-deep);
     box-shadow: 0 0 0 3px rgba(184,55,95,.2);
@@ -318,13 +391,13 @@
 
   /* ---------- outro ---------- */
   .outro{
-    text-align: center; padding: 74px 24px 66px;
+    text-align: center; padding: 54px 24px 50px;
     background: linear-gradient(180deg, var(--ink) 0%, #1d0a15 100%);
     border-top: 1px solid var(--line-soft);
   }
   .outro .moon{ color: var(--champagne); opacity: .8; }
   .outro p{ margin: 22px 0 0; font-size: 12.5px; color: var(--muted); letter-spacing: .06em; }
-  .outro h2{ margin-top: 14px; }
+  .outro h2{ margin-top: 14px; font-size: clamp(21px, 6.2vw, 28px); }
   .save-btn{
     margin-top: 30px; display: inline-flex; align-items: center; gap: 9px;
     padding: 14px 28px; border: 0; border-radius: 2px;
@@ -337,12 +410,22 @@
   .save-btn:hover{ filter: brightness(1.1); }
 
   footer{
-    padding: 34px 24px 46px; text-align: center;
+    padding: 28px 24px 34px; text-align: center;
     background: var(--ink-deep);
     font-size: 10.5px; line-height: 2; color: #5f4a55;
   }
   footer p{ margin: 0; }
   footer .cr{ margin-top: 10px; letter-spacing: .1em; }
+
+  @media (max-width: 430px){
+    .night-title{ font-size: 12.5px; line-height: 1.72; }
+    .night-meta{ font-size: 11.5px; padding: 3px 9px; }
+    .body-copy{ font-size: 12.5px; line-height: 1.95; }
+    .bookmark p{ font-size: 12px; line-height: 1.85; }
+    .steps li{ font-size: 12px; line-height: 1.75; }
+    .night{ padding: 13px 0; }
+    .lead{ font-size: 13px; }
+  }
 
   @media (prefers-reduced-motion: reduce){
     *{ transition: none !important; animation: none !important; }
@@ -350,6 +433,8 @@
 </style>
 </head>
 <body>
+<div class="testbar" id="testBar" style="display:none"></div>
+
 <div class="hero">
   <div class="hero-tag">
     <svg width="10" height="12" viewBox="0 0 10 12" fill="none" aria-hidden="true"><path d="M2 5V3.5a3 3 0 016 0V5" stroke="currentColor" stroke-width="1"/><rect x="1" y="5" width="8" height="6" rx="1" stroke="currentColor" stroke-width="1"/></svg>
@@ -357,7 +442,7 @@
   </div>
 
   <h1>もっと深く、<br>もっと激しく</h1>
-  <div class="sub">――大人の恋 ピックアップ</div>
+  <div class="sub">――大人の恋愛 ピックアップ</div>
 
   <p class="lead">
     誰かを求めずにはいられない夜。<br>
@@ -384,7 +469,7 @@
     <div class="cd-live" id="cdLive" hidden>今夜も、22時に。</div>
   </div>
 
-  <a class="scroll-cue" href="#tonight">今夜の物語を見る<span>↓</span></a>
+  <div class="scroll-cue">このあと、全10夜のラインナップ<span>↓</span></div>
 </div>
 
 <section class="pad center" id="tonight">
@@ -393,7 +478,7 @@
     <div class="eyebrow" style="margin-top:14px">Only here, after dark</div>
     <h2>ここから先は、GLOだけ。</h2>
     <p class="body-copy">
-      「ひとりの夜に、こっそり読みたい大人の恋」では お届けしきれなかった、その先へ。<br>
+      「ひとりの夜に、こっそり読みたい大人の恋愛」では お届けしきれなかった、その先へ。<br>
       触れられるたびに高まる想い、誰にも明かせないふたりの時間。全10夜にわたり、昨日より深く、今夜はもっと激しい物語をお届けします。
     </p>
 
@@ -402,6 +487,7 @@
       <div class="tonight-body">
         <div class="tonight-kicker" id="tonightKicker">今夜の物語</div>
         <div class="tonight-title" id="tonightTitle">公開日に、ここで新しい物語をご案内します</div>
+        <div id="tonightCta"></div>
         <p class="tonight-note">部屋の明かりを少し落として、誰にも邪魔されないひとときに。</p>
         <div class="pill">
           <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 4v3.2l2 1.2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
@@ -419,10 +505,11 @@
         <h3>このページを、ホーム画面やお気に入りに。</h3>
         <p>新しい物語は毎晩22時に公開します。スマートフォンならホーム画面に追加、パソコンならブックマーク（お気に入り）に登録しておけば、明日の夜もまっすぐここへ戻ってこられます。アプリのインストールは不要で、容量もほとんど使いません。</p>
 
+        <p class="os-lead">▼ お使いの端末をタップすると、手順が切り替わります</p>
         <div class="os-tabs" role="tablist" aria-label="お使いの端末">
-          <button class="os-tab" type="button" role="tab" data-os="ios" aria-selected="false">iPhone</button>
-          <button class="os-tab" type="button" role="tab" data-os="android" aria-selected="false">Android</button>
-          <button class="os-tab" type="button" role="tab" data-os="pc" aria-selected="false">パソコン</button>
+          <button class="os-tab" type="button" role="tab" data-os="ios" aria-selected="false"><svg width="15" height="19" viewBox="0 0 16 20" fill="none" aria-hidden="true"><rect x="2.2" y="1.5" width="11.6" height="17" rx="2.4" stroke="currentColor" stroke-width="1.2"/><path d="M6.6 15.4h2.8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>iPhone</span></button>
+          <button class="os-tab" type="button" role="tab" data-os="android" aria-selected="false"><svg width="15" height="19" viewBox="0 0 16 20" fill="none" aria-hidden="true"><rect x="2.2" y="1.5" width="11.6" height="17" rx="2.4" stroke="currentColor" stroke-width="1.2"/><path d="M6.6 15.4h2.8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>Android</span></button>
+          <button class="os-tab" type="button" role="tab" data-os="pc" aria-selected="false"><svg width="20" height="17" viewBox="0 0 22 18" fill="none" aria-hidden="true"><rect x="3" y="2" width="16" height="11" rx="1.6" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 15.8h19" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>パソコン</span></button>
         </div>
 
         <ol class="steps" id="steps"></ol>
@@ -434,7 +521,7 @@
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="4.5" y="4.5" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1"/><path d="M9.5 2.5h-7v7" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
             <span>うまくいかないときはURLをコピー</span>
           </button>
-          <p class="copy-hint">コピーしたURLをメモアプリやLINEの「Keepメモ」に貼り付けておくと、明日の夜そこから開けます。<br>renaissance-media.jp/category/gr2004</p>
+          <p class="copy-hint">コピーしたURLをメモアプリに貼り付けておくと、明日の夜そこから開けます。<br>https://renaissance-media.jp/category/gr2004</p>
         </div>
       </div>
     </div>
@@ -445,7 +532,9 @@
   <div class="wrap">
     <div class="eyebrow">Ten nights</div>
     <h2>10夜だけの、秘密の時間</h2>
-    <p class="body-copy" style="margin-top:14px">公開された物語は、このページに一夜ずつ加わります。</p>
+    <p class="body-copy" style="margin-top:14px">公開された物語は、このページに一夜ずつ加わります。<br>
+      <a href="https://renaissance-media.jp/category/gr2004" target="_top">連載一覧ページ</a>からも同じように配信済の物語をご覧になることができます。</p>
+    <a class="list-btn" href="https://renaissance-media.jp/category/gr2004" target="_top">連載一覧ページはこちら<svg width="13" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h11M8.4 1.4L12 5l-3.6 3.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     <div class="nights-panel">
       <div class="nights" id="nights"></div>
     </div>
@@ -481,12 +570,29 @@
     "彼女を抱くと、体中の縛りが解き放たれる。「急がないで、お願い、ゆっくりして」と喘ぐ声を聞きながら、俺は…",
     "気が付けば、妻とでは考えられないほど激しく義姉を抱いていた。そこに潜んでいたのは、感じたこともない興奮と快楽で…",
     "「私でいいんですか？」「今、凄く抱きたい、君がいい！　おいで」――手を引かれた先は彼の寝室だった",
-    "抱き上げられて寝室へ…彼は「泣かないで」と言いながらも、激しく求めてきて…指先で触れられるたび涙が止まらない。",
-    "おしゃべりするだけ…と入ったホテル。ベッドに座った瞬間、彼氏から電話が！でも「そんな彼氏、忘れさせてあげる」と押し倒されて…",
-    "【時代小説】「今度は手を使わずに…」――初夜の床で頼朝が政子に教えた性の作法は、想像もしないものだった",
     "当時はまだ初々しい人妻だった私。結婚式披露宴を済ませた翌日の夜、夫と子づくりをしょうと…",
+    "好きな人と何度もセックスを重ねるうち、身体はどんどん敏感に…さまざまな体位を試すほど快感に夢中になっていき",
+    "【時代小説】「今度は手を使わずに…」――初夜の床で頼朝が政子に教えた性の作法は、想像もしないものだった",
+    "「いいですか」と抱き上げられて寝室へ…帯をほどかれ、指先で触れられるたび、私は声が枯れるまで何度も彼の名前を呼んだ",
     "「壁に手をついて足を少し広げて」――泡越しに触れる彼の手。私は思わず声を漏らしてしまった"
   ];
+  // ▼▼ 記事URL（第1夜〜第10夜の順）▼▼
+  // 公開が決まった夜のURLを "" の中に貼り付けてください。
+  // 空のままの夜は「公開中」表示だけになり、リンクは出ません。
+  var URLS = [
+    "", // 第1夜  9/16（水）
+    "", // 第2夜  9/17（木）
+    "", // 第3夜  9/18（金）
+    "", // 第4夜  9/19（土）
+    "", // 第5夜  9/20（日）
+    "", // 第6夜  9/21（月）
+    "", // 第7夜  9/22（火）
+    "", // 第8夜  9/23（水）
+    "", // 第9夜  9/24（木）
+    ""  // 最終夜 9/25（金）
+  ];
+  // ▲▲ ここまで ▲▲
+
   var WD = ["日", "月", "火", "水", "木", "金", "土"];
 
   var nights = TITLES.map(function (title, i) {
@@ -497,6 +603,7 @@
     return {
       no: i + 1,
       title: title,
+      url: (URLS[i] || "").replace(/^\s+|\s+$/g, ""),
       open: open,
       label: jst.getUTCMonth() + 1 + "月" + jst.getUTCDate() + "日（" + WD[jst.getUTCDay()] + "）22時公開"
     };
@@ -515,11 +622,14 @@
           '<span class="night-meta"><span class="meta-mark"></span><span class="meta-text"></span></span>' +
         "</div>" +
         '<div class="night-title">' + n.title + "</div>" +
+        '<div class="night-link"></div>' +
       "</div>";
     list.appendChild(el);
   });
 
   var pad = function (v) { return v < 10 ? "0" + v : String(v); };
+
+  var arrowSvg = '<svg width="13" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h11M8.4 1.4L12 5l-3.6 3.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   var lockSvg = '<svg width="9" height="10" viewBox="0 0 10 12" fill="none" aria-hidden="true"><path d="M2.5 5V3.6a2.5 2.5 0 015 0V5" stroke="currentColor" stroke-width=".9"/><rect x="1.4" y="5" width="7.2" height="5.6" rx=".8" stroke="currentColor" stroke-width=".9"/></svg>';
 
@@ -532,8 +642,39 @@
   var elKicker = document.getElementById("tonightKicker");
   var elTitle = document.getElementById("tonightTitle");
 
+  // テスト表示：URLの末尾に ?night=3 を付けると「第3夜まで公開済み」の状態を確認できます。
+  // ?night=0 で公開前、?night=10 で全夜公開後。?now=2026-09-20T22:30 のように時刻指定も可。
+  // パラメータを付けなければ、いつも通り現在時刻で動きます。
+  function testTime() {
+    var m = /[?&]night=(\d+)/.exec(location.search);
+    if (m) {
+      var n = parseInt(m[1], 10);
+      if (n >= 0 && n <= 10) {
+        return n === 0
+          ? Date.UTC(2026, 8, 16, 3, 0, 0)
+          : Date.UTC(2026, 8, 15 + n, 14, 0, 0);
+      }
+    }
+    var d = /[?&]now=([^&]+)/.exec(location.search);
+    if (d) {
+      var t = Date.parse(decodeURIComponent(d[1]) + "+09:00");
+      if (!isNaN(t)) { return t; }
+    }
+    return null;
+  }
+
+  var FAKE = testTime();
+  var bar = document.getElementById("testBar");
+  if (FAKE !== null && bar) {
+    var j = new Date(FAKE + 9 * 3600 * 1000);
+    bar.style.display = "";
+    bar.innerHTML = "【テスト表示】" + (j.getUTCMonth() + 1) + "月" + j.getUTCDate() + "日 " +
+      pad(j.getUTCHours()) + ":" + pad(j.getUTCMinutes()) +
+      " 時点の見え方です。読者向けのURLにはこの表示は出ません。";
+  }
+
   function render() {
-    var now = Date.now();
+    var now = FAKE !== null ? FAKE : Date.now();
     var next = null;
     var latest = null;
 
@@ -541,15 +682,23 @@
       var card = document.getElementById("night-" + n.no);
       var mark = card.querySelector(".meta-mark");
       var text = card.querySelector(".meta-text");
+      var link = card.querySelector(".night-link");
       if (now >= n.open.getTime()) {
         card.classList.add("is-open");
         mark.innerHTML = '<span class="dot"></span>';
         text.textContent = "公開中";
+        if (link) {
+          link.innerHTML = n.url
+            ? '<a class="read-link" href="' + n.url + '" target="_top">' +
+              (n.no === 10 ? "最終夜" : "第" + n.no + "夜") + "を読む" + arrowSvg + "</a>"
+            : "";
+        }
         latest = n;
       } else {
         card.classList.remove("is-open");
         mark.innerHTML = lockSvg;
         text.textContent = n.label;
+        if (link) { link.innerHTML = ""; }
         if (!next) next = n;
       }
     });
@@ -573,10 +722,18 @@
       elLabel.textContent = "最後の夜まで公開しました";
     }
 
+    var cta = document.getElementById("tonightCta");
     if (latest) {
       elKicker.textContent = latest.no === 10 ? "最終夜・公開中" : "第" + latest.no + "夜・公開中";
       elTitle.textContent = latest.title;
+      if (cta) {
+        cta.innerHTML = latest.url
+          ? '<a class="read-cta" href="' + latest.url + '" target="_top">' +
+            (latest.no === 10 ? "最終夜" : "第" + latest.no + "夜") + "を読む" + arrowSvg + "</a>"
+          : "";
+      }
     } else {
+      if (cta) { cta.innerHTML = ""; }
       elKicker.textContent = "第1夜は9月16日（水）22時";
       elTitle.textContent = "公開日に、ここで新しい物語をご案内します";
     }
