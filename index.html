@@ -402,6 +402,24 @@
   .outro .moon{ color: var(--champagne); opacity: .8; }
   .outro p{ margin: 22px 0 0; font-size: 12.5px; color: var(--muted); letter-spacing: .06em; }
   .outro h2{ margin-top: 14px; font-size: clamp(21px, 6.2vw, 28px); }
+  .outro-guide{
+    margin: 28px auto 0; max-width: 27em;
+    padding: 16px 22px 18px; border-radius: 14px;
+    border: 1px solid rgba(230,167,191,.34);
+    background: rgba(255,255,255,.05);
+    text-align: center;
+  }
+  .og-title{
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--sans); font-size: 12.5px; font-weight: 500;
+    color: var(--champagne); letter-spacing: .06em;
+  }
+  .og-line{
+    margin-top: 10px; font-size: 13px; line-height: 1.85; color: #f4e6ec;
+  }
+  .og-line b{ color: #fff; font-weight: 500; }
+  .og-note{ margin-top: 8px; font-size: 11px; color: var(--muted-2); line-height: 1.7; }
+
   .save-btn{
     margin-top: 30px; display: inline-flex; align-items: center; gap: 9px;
     padding: 14px 28px; border: 0; border-radius: 2px;
@@ -561,10 +579,7 @@
   </div>
   <p>誰にも見られない、ひとりきりの時間に。</p>
   <h2>明日の夜も、ここでお待ちしています。</h2>
-  <a class="save-btn" href="#save">
-    <svg width="15" height="15" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="13" height="13" rx="3.2" stroke="currentColor" stroke-width="1.1"/><path d="M9 6v6M6 9h6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
-    <span>ホーム画面・お気に入りに追加する</span>
-  </a>
+  <div class="outro-guide" id="outroGuide"></div>
 </div>
 
 <footer>
@@ -819,10 +834,31 @@
     });
   }
 
+  // ページ下部の案内（1行版）
+  var ONELINER = {
+    ios: '画面下の<b>共有ボタン</b>（四角に上向きの矢印）を押して、<b>「ホーム画面に追加」</b>を選んでください。',
+    android: '画面右上の<b>メニュー</b>（縦に点が3つ）を押して、<b>「ホーム画面に追加」</b>を選んでください。',
+    pc: 'アドレスバー右端の<b>星のマーク（☆）</b>を押すと、ブックマーク（お気に入り）に登録できます。キーボードなら <b>Ctrl+D</b>（Macは <b>⌘+D</b>）でも同じです。'
+  };
+  var bmSvg = '<svg width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="13" height="13" rx="3.2" stroke="currentColor" stroke-width="1.1"/><path d="M9 6v6M6 9h6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>';
+
+  function showOutroGuide(os) {
+    var g = document.getElementById("outroGuide");
+    if (!g) { return; }
+    g.innerHTML =
+      '<div class="og-title">' + bmSvg + "ホーム画面・お気に入りに追加するには</div>" +
+      '<div class="og-line">' + (ONELINER[os] || ONELINER.pc) + "</div>" +
+      '<p class="og-note">明日の夜は、追加したアイコンやブックマークからこのページを開いてください。</p>';
+  }
+
   Array.prototype.forEach.call(document.querySelectorAll(".os-tab"), function (t) {
-    t.addEventListener("click", function () { showSteps(t.getAttribute("data-os")); });
+    t.addEventListener("click", function () {
+      showSteps(t.getAttribute("data-os"));
+      showOutroGuide(t.getAttribute("data-os"));
+    });
   });
   showSteps(detectOS());
+  showOutroGuide(detectOS());
 
   // 読者に保存してもらう特集ページのURL
   var PAGE_URL = "https://renaissance-media.jp/category/gr2004";
