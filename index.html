@@ -535,7 +535,7 @@
       <div>
         <div class="eyebrow">Your secret meeting place</div>
         <h3>このページを、ホーム画面やお気に入りに。</h3>
-        <p>新しい物語は毎晩22時に公開します。スマートフォンならホーム画面に追加、パソコンならブックマーク（お気に入り）に登録しておけば、明日の夜もまっすぐここへ戻ってこられます。アプリのインストールは不要で、容量もほとんど使いません。</p>
+        <p>新しい物語は毎晩22時に公開します。スマートフォンならホーム画面に追加、パソコンならブックマーク（お気に入り）に登録しておけば、毎晩22時、まっすぐここへ戻ってこられます。アプリのインストールは不要で、容量もほとんど使いません。</p>
 
         <p class="os-lead">▼ お使いの端末をタップすると、手順が切り替わります</p>
         <div class="os-tabs" role="tablist" aria-label="お使いの端末">
@@ -553,7 +553,7 @@
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="4.5" y="4.5" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1"/><path d="M9.5 2.5h-7v7" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
             <span>うまくいかないときはURLをコピー</span>
           </button>
-          <p class="copy-hint">コピーしたURLをメモアプリに貼り付けておくと、明日の夜そこから開けます。<br>https://renaissance-media.jp/category/gr2004</p>
+          <p class="copy-hint">コピーしたURLをメモアプリに貼り付けておくと、公開の夜に、そこから開けます。<br>https://renaissance-media.jp/category/gr2004</p>
         </div>
       </div>
     </div>
@@ -578,7 +578,7 @@
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 14.5A7.5 7.5 0 019.5 6c0-.9.2-1.8.5-2.6A8 8 0 1020.6 14a7.5 7.5 0 01-2.6.5z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
   </div>
   <p>誰にも見られない、ひとりきりの時間に。</p>
-  <h2>明日の夜も、ここでお待ちしています。</h2>
+  <h2 id="outroLead">毎晩22時、ここでお待ちしています。</h2>
   <div class="outro-guide" id="outroGuide"></div>
 </div>
 
@@ -757,6 +757,18 @@
       elLabel.textContent = "最後の夜まで公開しました";
     }
 
+    // 締めの見出しを時期に応じて出し分け
+    var lead = document.getElementById("outroLead");
+    if (lead) {
+      if (!latest) {
+        lead.innerHTML = "9月16日（水）22時、<br>ここでお待ちしています。";
+      } else if (next) {
+        lead.innerHTML = "明日の夜も、ここでお待ちしています。";
+      } else {
+        lead.innerHTML = "全10夜、ここで読めます。";
+      }
+    }
+
     var cta = document.getElementById("tonightCta");
     if (latest) {
       elKicker.textContent = latest.no === 10 ? "最終夜・公開中" : "第" + latest.no + "夜・公開中";
@@ -810,7 +822,7 @@
       steps: [
         "アドレスバー右端の<b>星のマーク（☆）</b>を押します。キーボードなら <b>Ctrl+D</b>（Macは <b>⌘+D</b>）でも同じです",
         "表示された画面で<b>「完了」</b>を押すと、ブックマーク（お気に入り）に登録されます",
-        "明日の夜は、ブックマークから直接このページを開いてください"
+        "22時になったら、ブックマークからこのページを開いてください"
       ],
       note: "※スマートフォンでご覧の方は、上のタブから端末を選んでください。ホーム画面へのアイコン追加をご案内します。"
     }
@@ -848,7 +860,7 @@
     g.innerHTML =
       '<div class="og-title">' + bmSvg + "ホーム画面・お気に入りに追加するには</div>" +
       '<div class="og-line">' + (ONELINER[os] || ONELINER.pc) + "</div>" +
-      '<p class="og-note">明日の夜は、追加したアイコンやブックマークからこのページを開いてください。</p>';
+      '<p class="og-note">22時になったら、追加したアイコンやブックマークからこのページを開いてください。</p>';
   }
 
   Array.prototype.forEach.call(document.querySelectorAll(".os-tab"), function (t) {
